@@ -1,0 +1,100 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.alookatSOAPAPIsInSpringBoot.com/school"
+           targetNamespace="http://www.alookatSOAPAPIsInSpringBoot.com/school"
+           elementFormDefault="qualified">
+    <xs:element name="UploadStudentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="age" type="xs:int"/>
+                <xs:element name="regNumber" type="xs:string"/>
+                <xs:element name="course" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllStudentRequest" >
+        <xs:complexType/>
+    </xs:element>
+    
+    <xs:element name="getAllStudentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="UploadStudentResponse"  type="tns:UploadStudentInfo" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateStudentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="studentId"   type="xs:long"/>
+                <xs:element name="UploadStudentInfo" type="tns:UploadStudentInfo" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateStudentResponse" >
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ServiceStatus"  type="tns:ServiceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteStudentRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="studentId"   type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteStudentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ServiceStatus"  type="tns:ServiceStatus" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getStudentByIdRequest" >
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="studentId"   type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getStudentByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element  name="UploadStudentResponse"  type="tns:UploadStudentInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ServiceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="UploadStudentResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="UploadStudentInfo" type="tns:UploadStudentInfo"/>
+                <xs:element name="ServiceStatus" type="tns:ServiceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="UploadStudentInfo">
+        <xs:sequence>
+            <xs:element name="studentId" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="age" type="xs:int"/>
+            <xs:element name="regNumber" type="xs:string"/>
+            <xs:element name="course" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
